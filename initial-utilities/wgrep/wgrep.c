@@ -6,14 +6,13 @@ void readlineAndMatch(FILE* fp, const char* match)
 {
   char* line = NULL;
   size_t len = 0;
-  ssize_t nch = 0;
 
-  while( (nch = getline(&line, &len, fp)) != -1 ) {
+  while(getline(&line, &len, fp) != -1 ) {
     if (strstr(line, match)) {
       printf("%s", line);
     }
   }
-
+  free(line);
 }
 
 int main(int argc, char** argv)
